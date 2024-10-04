@@ -1,0 +1,54 @@
+{
+  "name": "starter-nodejs-express",
+  "version": "1.0.0",
+  "description": "Ce projet montre comment mettre en place un environnement de développement avec Node.js 20.17, servant un front-end simple, et affichant une variable d'environnement en fonction du mode de démarrage (développement ou production).",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node src/app.js",
+    "dev": "cross-env NODE_ENV=development node src/app.js",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "test:e2e": "jest tests/e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/val-brlt/starter-nodejs-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/val-brlt/starter-nodejs-express/issues"
+  },
+  "homepage": "https://github.com/val-brlt/starter-nodejs-express#readme",
+  "dependencies": {
+    "express": "^4.21.0",
+    "starter-nodejs-express": "file:"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "puppeteer": "^23.5.0",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ],
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "./reports",
+          "outputName": "junit.xml"
+        }
+      ]
+    ]
+  }
+}

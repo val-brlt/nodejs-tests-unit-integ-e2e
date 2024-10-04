@@ -1,0 +1,35 @@
+<!-- src/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des utilisateurs</title>
+</head>
+<body>
+  <h1>Liste des utilisateurs</h1>
+  <ul id="user-list">
+    <!-- La liste des utilisateurs sera remplie ici par JavaScript -->
+  </ul>
+
+  <script>
+    // Script pour récupérer les utilisateurs et les afficher
+    async function fetchUsers() {
+      const response = await fetch('/api/users');
+      const users = await response.json();
+      const userList = document.getElementById('user-list');
+
+      users.forEach(user => {
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = `/users/${user.id}`;
+        link.textContent = `${user.name} (ID: ${user.id})`;
+        listItem.appendChild(link);
+        userList.appendChild(listItem);
+      });
+    }
+
+    window.onload = fetchUsers;
+  </script>
+</body>
+</html>
